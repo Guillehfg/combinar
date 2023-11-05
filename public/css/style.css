@@ -522,7 +522,7 @@ nav.open{
 
 
 
-/**************************** COMPRAR ***************************/
+/**************************** SERVICIOS ***************************/
 
 .overflow{
     overflow: hidden;
@@ -566,6 +566,30 @@ nav.open{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+
+
+.lineas{
+    margin-top: 50px;
+    width: 70%;
+}
+
+.th h3{
+    margin: 0 3vw 1vw 0;
+}
+
+
+tbody tr{
+    border: 1px solid var(--white-color);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+tr td{
+    padding: 1vw;
+}
+
+
+
 
 
 /*************************** ELIGE ASIENTO ************************/
@@ -657,7 +681,7 @@ nav.open{
 }
 
 .libre{
-    border: 1px solid white;
+    border: 1px solid var(--main-color);
 }
 
 .seleccionado{
@@ -824,6 +848,7 @@ nav.open{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap: 1rem;
 }
 
 .continue button{
@@ -1051,7 +1076,7 @@ h3{
 
 
 .provicional{
-    height: 30vh;
+    height: 60vh;
 }
 
 

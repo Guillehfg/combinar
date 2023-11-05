@@ -7,6 +7,8 @@ class App
 {
   public static function iniciar()
   {
+
+
     session_start();
     $nombreControlador = $_GET['c'] ?? "index";
     $metodo = $_GET['m'] ?? "index";

@@ -1,5 +1,11 @@
-.inicio 
+footer 
 {
-    color: white;
-    flex-direction: column;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+}
+
+.main 
+{
+    height: 100vh;
 }

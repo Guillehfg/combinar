@@ -24,7 +24,7 @@
         Noticias
     </a>
     <!----------------------->
-    <a href="<?php echo URL; ?>?c=Login&m=logout_backoffice">
+    <a href="<?php echo URL; ?>?c=Login&m=vista_backoffice_login">
         <i class="fa-solid fa-right-from-bracket"></i>
         Cerrar sesión
     </a>
