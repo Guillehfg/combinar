@@ -21,28 +21,16 @@ const go = document.getElementById("go");
 const dayBack = document.getElementById("day-back");
 const inputBack = document.getElementById("input-back");
 
-try 
-{
-  back.addEventListener("click", function () {
-    dayBack.style.display = "block";
-    back.style.backgroundColor = "#E79115";
-    go.style.backgroundColor = "transparent";
-    inputBack.setAttribute("required", "true");
-  });
-}catch(err)
-{
+back.addEventListener("click", function () {
+  dayBack.style.display = "block";
+  back.style.backgroundColor = "#E79115";
+  go.style.backgroundColor = "transparent";
+  inputBack.setAttribute("required", "true");
+});
 
-}
-
-try 
-{
-  go.addEventListener("click", function () {
-    dayBack.style.display = "none";
-    go.style.backgroundColor = "#E79115";
-    back.style.backgroundColor = "transparent";
-    inputBack.removeAttribute("required");
-  });
-}catch(err)
-{
-
-}
+go.addEventListener("click", function () {
+  dayBack.style.display = "none";
+  go.style.backgroundColor = "#E79115";
+  back.style.backgroundColor = "transparent";
+  inputBack.removeAttribute("required");
+});

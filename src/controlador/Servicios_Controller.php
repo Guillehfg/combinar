@@ -12,7 +12,7 @@
                 $destino = $_POST['destino'];
 
                 $resp = Servicios::busqueda_travel($origen, $destino);
-        
+
                 $resultados = json_decode($resp, true);
 
                 require 'src/vista/servicios/servicios.php';

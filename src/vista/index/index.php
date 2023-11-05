@@ -17,27 +17,6 @@
     <body>
     <?php require 'src/vista/menu.php'; ?>
 
-
-    <?php 
-        if(!empty($msj))
-        {
-            echo "<script>Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'reserva generada con exito.',
-                showConfirmButton: false,
-                timer: 1500
-              })</script>";
-        }else 
-        {
-            echo "<script>Swal.fire({
-                title: 'Error!',
-                text: 'Hubo algun error en su reserva de pasaje.',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-              })</script>";
-        }
-    ?>
     <!-- inicio website --> 
     <div class="main inicio">
             <div class="travel">
@@ -212,7 +191,6 @@
     <!-- JS inicio website -->
     <script src="public/js/index.js"></script>
     <script src="public/js/reserva.js"></script>
-    <script src="public/js/scroll-control.js"></script>'
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'
+    <script src="public/js/scroll-control.js"></script>
 
 </html>
