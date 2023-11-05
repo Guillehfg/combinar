@@ -33,22 +33,6 @@ class Login
     }
   }
 
-  public static function loginBackoffice($user, $password)
-  {
-    $conexion = Conexion::getConexion();
-    $pdo = $conexion->getPdo();
-
-    $sql = "SELECT * FROM administradores WHERE email = :e AND Contraseña = :c";
-    $consulta = $pdo->prepare($sql);
-    $consulta->bindParam(':e', $user);
-    $consulta->bindParam(':c', $password);
-    $consulta->execute();
-
-    $usuarioEncontrado = $consulta->fetch();
-
-    return $usuarioEncontrado;
-  }
-
   public static function register($usuario, $pwd, $nombre, $apellido, $edad)
   {
     $conexion = Conexion::getConexion();

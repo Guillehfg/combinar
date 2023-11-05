@@ -14,7 +14,33 @@ class Reserva
     }
 
 
-    public static function reserva_pasaje($nombre_user, $id_servicio, $fecha_reserva)
+    public static function reserva_pasaje($idUsuario, $idServicio, $idOmnibus, $numAsiento, $fechaActual)
+    {
+        try {
+            $conexion = Conexion::getConexion();
+            $pdo = $conexion->getPdo();
+
+            // Realizar insert en la tabla reserva
+            $sql = "INSERT INTO reserva (CodAsiento, IdOmnibus, IdServicio, IDUsuario, Fecha_Reserva) VALUES (:ca, :ido, :ids, :idu, :fr)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':ca', $numAsiento);
+            $stmt->bindParam(':ido', $idOmnibus); 
+            $stmt->bindParam(':ids', $idServicio);
+            $stmt->bindParam(':idu', $idUsuario); 
+            $stmt->bindParam(':fr', $fechaActual);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } catch (\Throwable $th) {
+            return $th;
+        }
+    }
+
+    public static function id_user($email)
     {
         try {
             $conexion = Conexion::getConexion();
@@ -23,37 +49,12 @@ class Reserva
             // Obtener IDUsuario en base a su email
             $sql = "SELECT IDUsuario FROM usuarios WHERE Email = :email";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':email', $nombre_user, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
 
-            $id_usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            $id_usuario = $stmt->fetchColumn(); 
 
-            // Obtener IdOmnibus
-            $sql = "SELECT IdOmnibus FROM servicios WHERE IdServicio = :servicio_ido";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':servicio_ido', $id_servicio, PDO::PARAM_STR);
-            $stmt->execute();
-
-            $id_omnibus = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Fuerza el código de asiento a 1 (no hay interfaz para seleccionar asiento de momento)
-            $cod_asiento = 1;
-
-            // Realizar insert en la tabla reserva
-            $sql = "INSERT INTO reserva (CodAsiento, IdOmnibus, IdServicio, IDUsuario, Fecha_Reserva) VALUES (:ca, :ido, :ids, :idu, :fr)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':ca', $cod_asiento);
-            $stmt->bindParam(':ido', $id_omnibus['IdOmnibus']); // Obtener el valor de $id_omnibus
-            $stmt->bindParam(':ids', $id_servicio);
-            $stmt->bindParam(':idu', $id_usuario['IDUsuario']); // Obtener el valor de $id_usuario
-            $stmt->bindParam(':fr', $fecha_reserva);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return $id_usuario;
         } catch (\Throwable $th) {
             return $th;
         }
